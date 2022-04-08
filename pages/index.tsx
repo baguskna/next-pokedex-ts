@@ -33,6 +33,7 @@ const cardStyle = css`
 `;
 
 const titleStyle = css`
+  margin-top: 5px;
   text-align: center;
 `;
 
