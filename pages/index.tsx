@@ -7,26 +7,33 @@ import { css } from "@emotion/react";
 import { client } from "../lib/apollo-client";
 import { HomeProps, Pokemon } from "../lib/interfaces";
 import { COLORS } from "../lib/colors";
+import { H6 } from "../lib/pokedex-design-system";
 
 const mainContainerStyle = css`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  margin: 0 auto;
+  max-width: 960px;
+  padding-top: 50px;
 `;
 
-// margin: 10px;
-// border-radius: 10px;
-// box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-// transition: all 0.2s ease-in-out;
-// display: flex;
-// flex-direction: column;
-// justify-content: space-between;
-// align-items: center;
-// cursor: pointer;
 const figureStyle = css`
+  align-items: center;
   background-color: ${COLORS.grey_100};
+  border-radius: 5px;
+  display: flex;
   height: 200px;
+  justify-content: center;
   width: 200px;
+`;
+
+const cardStyle = css`
+  margin: 0 3px 17px;
+`;
+
+const titleStyle = css`
+  text-align: center;
 `;
 
 const Home: NextPage<HomeProps> = (props) => {
@@ -39,17 +46,17 @@ const Home: NextPage<HomeProps> = (props) => {
       </Head>
       <main css={mainContainerStyle}>
         {props.pokemons.map((pokemon: Pokemon) => (
-          <div key={pokemon.id}>
+          <article css={cardStyle} key={pokemon.id}>
             <figure css={figureStyle}>
               <Image
                 src={pokemon.artwork}
-                width={200}
-                height={200}
+                width={175}
+                height={175}
                 alt={pokemon.name}
               />
             </figure>
-            {pokemon.name}
-          </div>
+            <H6 css={titleStyle}>{pokemon.name}</H6>
+          </article>
         ))}
       </main>
     </div>
@@ -60,7 +67,7 @@ export async function getStaticProps(): Promise<{ props: HomeProps }> {
   const { data } = await client.query({
     query: gql`
       query pokemons {
-        pokemons(limit: 50, offset: 0) {
+        pokemons(limit: 1000, offset: 0) {
           results {
             id
             url

@@ -1,3 +1,4 @@
 export enum COLORS {
-  grey_100 = "#f5f5f5",
+  grey_100 = "#f2f2f2",
+  grey_500 = "#313131",
 }
