@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { gql } from "@apollo/client";
 import { css } from "@emotion/react";
+import Link from "next/link";
 
 import { client } from "../lib/apollo-client";
 import { HomeProps, Pokemon } from "../lib/interfaces";
@@ -22,6 +23,7 @@ const figureStyle = css`
   align-items: center;
   background-color: ${COLORS.grey_100};
   border-radius: 5px;
+  cursor: pointer;
   display: flex;
   height: 200px;
   justify-content: center;
@@ -48,14 +50,16 @@ const Home: NextPage<HomeProps> = (props) => {
       <main css={mainContainerStyle}>
         {props.pokemons.map((pokemon: Pokemon) => (
           <article css={cardStyle} key={pokemon.id}>
-            <figure css={figureStyle}>
-              <Image
-                src={pokemon.artwork}
-                width={175}
-                height={175}
-                alt={pokemon.name}
-              />
-            </figure>
+            <Link href={"/detail/" + pokemon.name} passHref>
+              <figure css={figureStyle}>
+                <Image
+                  src={pokemon.artwork}
+                  width={175}
+                  height={175}
+                  alt={pokemon.name}
+                />
+              </figure>
+            </Link>
             <H6 css={titleStyle}>{pokemon.name}</H6>
           </article>
         ))}
@@ -68,7 +72,7 @@ export async function getStaticProps(): Promise<{ props: HomeProps }> {
   const { data } = await client.query({
     query: gql`
       query pokemons {
-        pokemons(limit: 1000, offset: 0) {
+        pokemons(limit: 500, offset: 0) {
           results {
             id
             url
