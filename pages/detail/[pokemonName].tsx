@@ -3,15 +3,15 @@ import { gql } from "@apollo/client";
 import Image from "next/image";
 
 import { client } from "../../lib/apollo-client";
-import { PokemonDetail } from "../../lib/interfaces";
+import { PokemonProps } from "../../lib/interfaces";
+import { H2 } from "../../lib/pokedex-design-system";
 
-const DetailPage: NextPage<PokemonDetail> = (props) => {
-  console.log(props);
+const DetailPage: NextPage<PokemonProps> = (props) => {
   const { name, sprites } = props.pokemon;
 
   return (
     <div>
-      <h1>{name}</h1>
+      <H2>{name}</H2>
       <Image src={sprites.front_default} width={175} height={175} alt={name} />
     </div>
   );
@@ -19,7 +19,7 @@ const DetailPage: NextPage<PokemonDetail> = (props) => {
 
 export async function getStaticPaths(): Promise<{
   paths: never[];
-  fallback: string;
+  fallback: string | boolean;
 }> {
   return {
     paths: [],
@@ -29,7 +29,7 @@ export async function getStaticPaths(): Promise<{
 
 export async function getStaticProps(
   context: any
-): Promise<{ props: PokemonDetail }> {
+): Promise<{ props: PokemonProps }> {
   const { pokemonName } = context.params;
   const { data } = await client.query({
     query: gql`
