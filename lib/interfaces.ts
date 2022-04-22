@@ -11,7 +11,7 @@ export interface HomeProps {
   pokemons: Pokemon[];
 }
 
-export interface PokemonDetail {
+export interface PokemonProps {
   pokemon: {
     abilities?: any;
     base_experience?: number;

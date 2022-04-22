@@ -16,7 +16,7 @@ const mainContainerStyle = css`
   justify-content: space-evenly;
   margin: 0 auto;
   max-width: 960px;
-  padding-top: 50px;
+  padding-top: 80px;
 `;
 
 const figureStyle = css`
