@@ -72,7 +72,7 @@ export async function getStaticProps(): Promise<{ props: HomeProps }> {
   const { data } = await client.query({
     query: gql`
       query pokemons {
-        pokemons(limit: 500, offset: 0) {
+        pokemons(limit: 200, offset: 0) {
           results {
             id
             url

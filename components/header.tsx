@@ -2,7 +2,6 @@ import { NextPage } from "next";
 import { css } from "@emotion/react";
 
 import { H2 } from "../lib/pokedex-design-system";
-import { COLORS } from "../lib/colors";
 
 const headerStyle = css`
   align-items: center;
