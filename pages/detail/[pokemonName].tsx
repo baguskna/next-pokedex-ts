@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import { gql } from "@apollo/client";
 import Image from "next/image";
 import { css } from "@emotion/react";
+import { PropsWithChildren } from "react";
 
 import { client } from "../../lib/apollo-client";
 import { PokemonProps } from "../../lib/interfaces";
@@ -13,13 +14,16 @@ const detailContainer = css`
   padding-top: 90px;
 `;
 
-const DetailPage: NextPage<PokemonProps> = (props) => {
-  const { name, sprites } = props.pokemon;
+const DetailPage: NextPage<PokemonProps> = (
+  props: PropsWithChildren<PokemonProps>
+) => {
+  const { name, sprites, weight } = props.pokemon;
 
   return (
     <div css={detailContainer}>
       <H2>{name}</H2>
       <Image src={sprites.front_default} width={175} height={175} alt={name} />
+      <p>Weight: {weight}</p>
     </div>
   );
 };
