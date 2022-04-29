@@ -29,6 +29,6 @@ export interface PokemonProps {
     species?: any;
     sprites?: any;
     types?: any;
-    weigth?: number;
+    weight?: number;
   };
 }
