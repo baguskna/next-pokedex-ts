@@ -17,13 +17,20 @@ const detailContainer = css`
 const DetailPage: NextPage<PokemonProps> = (
   props: PropsWithChildren<PokemonProps>
 ) => {
-  const { name, sprites, weight } = props.pokemon;
+  const { name, sprites, types, weight } = props.pokemon;
+
+  const typesPokemon: () => JSX.Element = () => {
+    return types.map((type: any, index: number) => {
+      return <div key={index}>{type.type.name}</div>;
+    });
+  };
 
   return (
     <div css={detailContainer}>
       <H2>{name}</H2>
       <Image src={sprites.front_default} width={175} height={175} alt={name} />
       <p>Weight: {weight}</p>
+      {typesPokemon()}
     </div>
   );
 };
