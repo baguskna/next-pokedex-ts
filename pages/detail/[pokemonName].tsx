@@ -21,7 +21,7 @@ const DetailPage: NextPage<PokemonProps> = (
 
   const typesPokemon: () => JSX.Element = () => {
     return types.map((type: any, index: number) => {
-      return <div key={index}>{type.type.name}</div>;
+      return <p key={index}>Type {type.type.name}</p>;
     });
   };
 
