@@ -16,3 +16,10 @@ export const H2 = styled.h2`
   line-height: 28px;
   text-transform: capitalize;
 `;
+
+export const BUTTON_TYPE = styled.button`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 6px 20px;
+`;
