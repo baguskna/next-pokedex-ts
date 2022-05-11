@@ -6,7 +6,7 @@ import { PropsWithChildren } from "react";
 
 import { client } from "../../lib/apollo-client";
 import { PokemonProps } from "../../lib/interfaces";
-import { H2 } from "../../lib/pokedex-design-system";
+import { BUTTON_TYPE, H2 } from "../../lib/pokedex-design-system";
 
 const detailContainer = css`
   max-width: 904px;
@@ -21,7 +21,12 @@ const DetailPage: NextPage<PokemonProps> = (
 
   const typesPokemon: () => JSX.Element = () => {
     return types.map((type: any, index: number) => {
-      return <p key={index}>Type {type.type.name}</p>;
+      return (
+        <div key={index}>
+          Type:
+          <BUTTON_TYPE>{type.type.name}</BUTTON_TYPE>
+        </div>
+      );
     });
   };
 
