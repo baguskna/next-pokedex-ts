@@ -19,6 +19,10 @@ export const H2 = styled.h2`
 
 export const BUTTON_TYPE = styled.button`
   align-items: center;
+  background-color: ${COLORS.orange_0};
+  border: none;
+  border-radius: 3px;
+  color: ${COLORS.grey_0};
   display: flex;
   justify-content: center;
   padding: 6px 20px;

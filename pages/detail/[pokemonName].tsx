@@ -23,19 +23,18 @@ const DetailPage: NextPage<PokemonProps> = (
     return types.map((type: any, index: number) => {
       return (
         <div key={index}>
-          Type:
           <BUTTON_TYPE>{type.type.name}</BUTTON_TYPE>
         </div>
       );
     });
   };
-
+  console.log(types);
   return (
     <div css={detailContainer}>
       <H2>{name}</H2>
       <Image src={sprites.front_default} width={175} height={175} alt={name} />
       <p>Weight: {weight}</p>
-      {typesPokemon()}
+      Type: {typesPokemon()}
     </div>
   );
 };
