@@ -17,9 +17,24 @@ export const H2 = styled.h2`
   text-transform: capitalize;
 `;
 
+type ButtonTypeProps = {
+  pokemonType: string;
+};
+
 export const BUTTON_TYPE = styled.button`
   align-items: center;
-  background-color: ${COLORS.orange_0};
+  background-color: ${(props: ButtonTypeProps) => {
+    console.log(props.pokemonType);
+    if (props.pokemonType === "water") {
+      return COLORS.blue_0;
+    }
+
+    if (props.pokemonType === "bug") {
+      return COLORS.green_0;
+    }
+
+    return COLORS.orange_0;
+  }};
   border: none;
   border-radius: 3px;
   color: ${COLORS.grey_0};
