@@ -20,15 +20,10 @@ const DetailPage: NextPage<PokemonProps> = (
   const { name, sprites, types, weight } = props.pokemon;
 
   const typesPokemon: () => JSX.Element = () => {
-    return types.map((type: any, index: number) => {
-      return (
-        <div key={index}>
-          <BUTTON_TYPE>{type.type.name}</BUTTON_TYPE>
-        </div>
-      );
-    });
+    const color = types[0].type.name;
+    return <BUTTON_TYPE pokemonType={color}>{types[0].type.name}</BUTTON_TYPE>;
   };
-  console.log(types);
+
   return (
     <div css={detailContainer}>
       <H2>{name}</H2>
