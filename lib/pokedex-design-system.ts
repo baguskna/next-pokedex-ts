@@ -33,7 +33,7 @@ export const BUTTON_TYPE = styled.button`
       return COLORS.green_0;
     }
 
-    return COLORS.orange_0;
+    return COLORS.normal_0;
   }};
   border: none;
   border-radius: 3px;
